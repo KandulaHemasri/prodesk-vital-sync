@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getToken } from "./authService";
 
-const API_URL = "http://localhost:5000/api/patients/";
+const API_URL = "https://prodesk-vital-sync.onrender.com/api/patients/";
 
 export const getProtectedData = async () => {
   const token = getToken();
