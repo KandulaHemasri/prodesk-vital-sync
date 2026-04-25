@@ -150,6 +150,21 @@
   }
 }
 
+@media (max-width: 768px) {
+  .profile-page {
+    padding: 15px;
+  }
+  .doctor-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .calendar {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+}
+
 /* LOADING */
 .loading {
   text-align: center;

@@ -163,6 +163,10 @@
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  .doctors-container {
+    padding: 15px;
+  }
+  
   .layout {
     flex-direction: column;
   }
@@ -177,5 +181,9 @@
   .sidebar button {
     flex: 1;
     white-space: nowrap;
+  }
+  
+  .doctor-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
   }
 }

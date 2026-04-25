@@ -99,3 +99,22 @@
   align-self: flex-start;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .dashboard-wrapper {
+    padding: 20px 15px;
+  }
+  .dash-welcome-banner {
+    padding: 30px 20px;
+    justify-content: center;
+    text-align: center;
+  }
+  .dash-welcome-banner h1 {
+    font-size: 1.8rem;
+  }
+  .dash-bento-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}

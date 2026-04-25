@@ -172,3 +172,16 @@ button {
   border-radius: 12px;
   cursor: pointer;
 }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .doctor-grid {
+    grid-template-columns: 1fr;
+  }
+  .row {
+    flex-direction: column;
+  }
+  .appt-form-box, .form-card {
+    padding: 15px;
+  }
+}

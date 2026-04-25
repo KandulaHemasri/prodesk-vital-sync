@@ -156,3 +156,24 @@ p {
   background: #caf0f8;
   transform: scale(1.05);
 }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+  .nav-right {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}
