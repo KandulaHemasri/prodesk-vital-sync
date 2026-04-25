@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getToken } from "./authService";
 
-const API = "https://prodesk-vital-sync.onrender.com/api/appointments";
+const API = "https://prodesk-vital-sync-1.onrender.com/api/appointments";
 
 const authHeader = () => ({
   headers: {

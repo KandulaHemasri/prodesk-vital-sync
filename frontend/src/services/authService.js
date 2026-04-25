@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://prodesk-vital-sync.onrender.com/api/auth/";
+const API_URL = "https://prodesk-vital-sync-1.onrender.com/api/auth/";
 
 // REGISTER
 export const register = async (userData) => {
