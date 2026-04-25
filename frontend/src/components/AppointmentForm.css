@@ -1,0 +1,174 @@
+.appt-form-box {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.appt-form-box:hover {
+  transform: translateY(-3px);
+}
+
+.appt-form-box h2 {
+  margin-bottom: 5px;
+  color: #2c3e50;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+/* INPUT GROUP */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  font-size: 13px;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* INPUT STYLE */
+.input-group input,
+.input-group textarea {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 6px rgba(76,175,80,0.3);
+}
+
+.input-group select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  background: white;
+  cursor: pointer;
+}
+
+.input-group select:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 6px rgba(76,175,80,0.3);
+}
+
+/* TEXTAREA */
+textarea {
+  resize: none;
+  height: 80px;
+}
+
+/* ROW (DATE + TIME) */
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+/* BUTTON */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #4CAF50, #2e7d32);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 15px rgba(76,175,80,0.4);
+}
+
+.form-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* DOCTOR GRID */
+.doctor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.doctor-card {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  cursor: pointer;
+  transition: 0.3s;
+  background: #fafafa;
+}
+
+.doctor-card:hover {
+  transform: scale(1.03);
+  border-color: #4CAF50;
+}
+
+.doctor-card.active {
+  background: #e8f5e9;
+  border: 1px solid #4CAF50;
+}
+
+/* STATUS */
+.online {
+  color: green;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.offline {
+  color: red;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+/* FORM */
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+form textarea {
+  height: 80px;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  background: linear-gradient(135deg, #4CAF50, #2e7d32);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}

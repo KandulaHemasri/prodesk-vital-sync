@@ -1,56 +1,3 @@
-// import React from "react";
-// import { useNavigate } from "react-router-dom";
-
-// const Navbar = () => {
-//   const navigate = useNavigate();
-//   const user = JSON.parse(localStorage.getItem("user"));
-
-
-//   const handleLogout = () => {
-//     localStorage.removeItem("user");
-//     navigate("/");
-//   };
-
-//   return (
-//     <nav className="navbar">
-      
-//       {/* Logo */}
-//       <h2 onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
-//         VitalSync
-//       </h2>
-
-//       {/* Links */}
-//       <ul className="nav-links">
-//         <li onClick={() => navigate("/home")}>HOME</li>
-//         <li onClick={() => navigate("/doctors")}>ALL DOCTORS</li>
-//         <li onClick={() => navigate("/about")}>ABOUT</li>
-//         <li onClick={() => navigate("/contact")}>CONTACT</li>
-
-//         {/* Conditional Links */}
-//         {!user ? (
-//           <>
-//             {/* <li onClick={() => navigate("/")}>LOGIN</li> */}
-//             <li onClick={() => navigate("/register")}>CREATE ACCOUNT</li>
-//           </>
-//         ) : (
-//           <>
-//             <li onClick={() => navigate("/dashboard")}>DASHBOARD</li>
-//             <li onClick={handleLogout}>LOGOUT</li>
-//           </>
-//         )}
-//       </ul>
-
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
-
-
-
-
-
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -85,6 +32,7 @@ const Navbar = () => {
         <li onClick={() => navigate("/doctors")}>ALL DOCTORS</li>
         <li onClick={() => navigate("/about")}>ABOUT</li>
         <li onClick={() => navigate("/contact")}>CONTACT</li>
+        <li onClick={() => navigate("/appointments")}>APPOINTMENTS</li>
       </ul>
 
 
@@ -96,7 +44,7 @@ const Navbar = () => {
         ) : (
           <>
             <span className="profile-name">
-              👤 {user.name}
+              👤 {user?.user?.name || user?.name}
             </span>
 
             <button onClick={handleLogout}>

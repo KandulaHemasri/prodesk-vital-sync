@@ -8,7 +8,7 @@ const Home = () => {
 
  const handleBook = () => {
   if (user) {
-    navigate("/dashboard"); 
+    navigate("/doctors"); 
   } else {
     navigate("/login");     
   }

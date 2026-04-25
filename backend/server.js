@@ -1,11 +1,13 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const cors = require("cors");
-const connectDB = require("./config/db");
-const authRoutes = require("./routes/authRoutes");
-const patientRoutes = require("./routes/patientRoutes");
+import "dotenv/config";
+import express from "express";
+import cors from "cors";
+import connectDB from "./config/db.js";
+import authRoutes from "./routes/authRoutes.js";
+import patientRoutes from "./routes/patientRoutes.js";
+import appointmentRoutes from "./routes/appointmentRoutes.js";
+import doctorRoutes from "./routes/doctorRoutes.js";
+import paymentRoutes from "./routes/paymentRoutes.js";
 
-dotenv.config();
 connectDB();
 
 const app = express();
@@ -22,6 +24,12 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 
 app.use("/api/patients", patientRoutes);
+
+app.use("/api/appointments", appointmentRoutes);
+
+app.use("/api/doctors", doctorRoutes);
+
+app.use("/api/payment", paymentRoutes);
 
 const PORT = process.env.PORT || 5000;
 

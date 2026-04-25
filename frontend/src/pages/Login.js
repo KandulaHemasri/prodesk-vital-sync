@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { login } from "../services/authService";
 import { useNavigate } from "react-router-dom";
 
-
 const Login = () => {
   const navigate = useNavigate();
 
@@ -12,16 +11,29 @@ const Login = () => {
   });
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      await login(formData);
-      alert("Login Successful!");
-      navigate("/dashboard");
-    } catch (err) {
-      alert("Invalid Credentials");
-    }
-  };
+  try {
+    const data = await login(formData);
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify({
+        token: data.token,
+        user: {
+          id: data._id,
+          name: data.name,
+          email: data.email,
+        },
+      })
+    );
+
+    alert("Login Successful!");
+    navigate("/dashboard");
+  } catch (err) {
+    alert(err.response?.data?.message || "Invalid Credentials");
+  }
+};
 
   return (
     <div className="container">
@@ -49,7 +61,7 @@ const Login = () => {
         <button type="submit">Login</button>
       </form>
 
-      <p onClick={() => navigate("/register")}>
+      <p onClick={() => navigate("/register")} style={{ cursor: "pointer" }}>
         Don't have an account? Register
       </p>
     </div>

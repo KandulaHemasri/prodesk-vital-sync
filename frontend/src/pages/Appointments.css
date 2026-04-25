@@ -1,0 +1,163 @@
+.appointments-container {
+  padding: 40px 20px;
+  background-color: #f8fafc;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* TITLE */
+.appointments-container .title {
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1e293b;
+  letter-spacing: -0.5px;
+}
+
+/* EMPTY STATE */
+.empty {
+  text-align: center;
+  color: #64748b;
+  margin-top: 50px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* CARD */
+.appointment-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #f1f5f9;
+}
+
+.appointment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.appointment-card.pending {
+  border: 2px dashed #8b5cf6;
+  background-color: #f8fafc;
+}
+
+/* LEFT SECTION */
+.left {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+.left img {
+  width: 100px;
+  height: 100px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* DETAILS */
+.details h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.4rem;
+  color: #0f172a;
+}
+
+.spec {
+  color: #64748b;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.address-title {
+  font-weight: bold;
+  color: #475569;
+  margin-top: 5px;
+  font-size: 0.95rem;
+}
+
+.datetime {
+  margin-top: 15px;
+  color: #334155;
+  font-weight: 600;
+  background: #f1f5f9;
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* RIGHT SECTION */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: flex-end;
+}
+
+/* BUTTONS */
+.pay-btn {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
+}
+
+.pay-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(139, 92, 246, 0.4);
+}
+
+/* Disabled styling is already applied via inline style for Paid in frontend, but we specify backup default: */
+.pay-btn:disabled {
+  box-shadow: none;
+  transform: none;
+}
+
+.cancel-btn {
+  padding: 10px 15px;
+  background: white;
+  color: #ef4444;
+  border: 1px solid #fee2e2;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .appointment-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .right {
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .pay-btn, .cancel-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
