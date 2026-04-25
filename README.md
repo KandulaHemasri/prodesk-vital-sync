@@ -7,6 +7,10 @@ VitalSync is a full-stack healthcare management platform built using the MERN st
 ---
 # Live link - "https://prodesk-vital-sync.vercel.app/"
 
+# For payment - use this card details for payment 
+ Enter Card number - 4242 4242 4242 4242
+ Beacuse test stripe was used
+
 ## 🚀 Features
 
 ### 🔐 Authentication
