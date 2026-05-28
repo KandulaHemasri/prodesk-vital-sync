@@ -1,120 +1,173 @@
 /* Container */
 .dashboard-wrapper {
   min-height: 100vh;
-  background-color: #eef2f6;
+  background: linear-gradient(135deg, #f0f4f8 0%, #f9fafb 50%, #eef2f6 100%);
   font-family: 'Inter', sans-serif;
   padding: 50px 20px;
 }
 
 .dashboard-content {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 35px;
+  gap: 40px;
 }
 
-/* Welcome Banner */
 .dash-welcome-banner {
-  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 50px;
-  border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.15);
-  display: flex;
-  align-items: center;
+  padding: 50px 40px;
+  border-radius: 28px;
+  box-shadow: 0 25px 60px rgba(102, 126, 234, 0.3);
+}
+
+.dash-subtitle {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 700;
+  margin-bottom: 14px;
+  font-size: 0.85rem;
 }
 
 .dash-welcome-banner h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: 800;
   margin: 0;
   letter-spacing: -0.5px;
 }
 
-/* Grid Layout */
-.dash-bento-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
+.dash-intro {
+  margin-top: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.75;
+  max-width: 800px;
+  font-size: 1.1rem;
 }
 
-/* Essential Card Styling */
+.dash-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
 .dash-card {
-  background: white;
-  padding: 35px;
-  border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 32px;
+  border-radius: 24px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.dash-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  pointer-events: none;
 }
 
 .dash-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-12px);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.12);
 }
 
 .dash-card h3 {
-  font-size: 1.4rem;
+  margin: 0 0 16px 0;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: #1e293b;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  position: relative;
+  z-index: 1;
 }
 
 .dash-card p {
-  color: #64748b;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
-  flex-grow: 1; /* Pushes content down if needed */
+  margin: 0 0 20px 0;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  position: relative;
+  z-index: 1;
+  flex-grow: 1;
 }
 
-/* Primary Highlight Card (Appointments) */
 .dash-primary-card {
-  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
-  color: white;
-  cursor: pointer;
-}
-
-.dash-primary-card h3 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
 }
 
 .dash-primary-card p {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
 }
 
-.dash-primary-card .record-badge {
-  background: white;
-  color: #3b82f6;
-  padding: 8px 18px;
-  border-radius: 30px;
+.dash-secondary-card {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+}
+
+.dash-secondary-card p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dash-tertiary-card {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+}
+
+.dash-tertiary-card p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.record-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 999px;
   font-weight: 700;
-  font-size: 0.95rem;
-  align-self: flex-start;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.35);
 }
 
-/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .dash-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .dashboard-wrapper {
-    padding: 20px 15px;
+    padding: 30px 15px;
   }
+
+  .dashboard-content {
+    gap: 30px;
+  }
+
   .dash-welcome-banner {
-    padding: 30px 20px;
-    justify-content: center;
-    text-align: center;
+    padding: 35px 24px;
   }
+
   .dash-welcome-banner h1 {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
   }
+
   .dash-bento-grid {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 20px;
+  }
+
+  .dash-card {
+    padding: 24px;
   }
 }

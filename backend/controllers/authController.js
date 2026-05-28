@@ -14,7 +14,7 @@ export const registerUser = async (req, res) => {
   try {
     console.log("REGISTER BODY:", req.body);
 
-    const { name, email, password } = req.body;
+    const { name, email, password, age, gender } = req.body;
 
     if (!name || !email || !password) {
       return res.status(400).json({ message: "All fields required" });
@@ -30,12 +30,16 @@ export const registerUser = async (req, res) => {
       name,
       email,
       password,
+      age: age || null,
+      gender: gender || null,
     });
 
     res.status(201).json({
       _id: user._id,
       name: user.name,
       email: user.email,
+      age: user.age,
+      gender: user.gender,
       token: generateToken(user._id),
     });
 
@@ -66,6 +70,8 @@ export const loginUser = async (req, res) => {
       _id: user._id,
       name: user.name,
       email: user.email,
+      age: user.age,
+      gender: user.gender,
       token: generateToken(user._id),
     });
   } catch (error) {

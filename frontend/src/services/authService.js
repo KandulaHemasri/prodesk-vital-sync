@@ -15,6 +15,8 @@ export const register = async (userData) => {
           id: res.data._id,
           name: res.data.name,
           email: res.data.email,
+          age: res.data.age ?? null,
+          gender: res.data.gender ?? null,
         },
       })
     );
@@ -36,6 +38,8 @@ export const login = async (userData) => {
           id: res.data._id,
           name: res.data.name,
           email: res.data.email,
+          age: res.data.age ?? null,
+          gender: res.data.gender ?? null,
         },
       })
     );

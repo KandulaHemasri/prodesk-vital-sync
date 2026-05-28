@@ -29,12 +29,10 @@ const Navbar = () => {
 
       <ul className="nav-links">
         <li onClick={() => navigate("/home")}>HOME</li>
-        <li onClick={() => navigate("/doctors")}>ALL DOCTORS</li>
         <li onClick={() => navigate("/about")}>ABOUT</li>
         <li onClick={() => navigate("/contact")}>CONTACT</li>
-        <li onClick={() => navigate("/appointments")}>APPOINTMENTS</li>
+        <li onClick={() => navigate("/dashboard")}>DASHBOARD</li>
       </ul>
-
 
       <div className="nav-right">
         {!user ? (
@@ -43,9 +41,13 @@ const Navbar = () => {
           </button>
         ) : (
           <>
-            <span className="profile-name">
-              👤 {user?.user?.name || user?.name}
-            </span>
+            <button 
+              className="profile-btn"
+              onClick={() => navigate("/profile")}
+              title={user?.user?.name || user?.name}
+            >
+              👤
+            </button>
 
             <button onClick={handleLogout}>
               Logout

@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getDoctors } from "../services/doctorService";
 import { getProtectedData } from "../services/patientService";
 import { getAppointments } from "../services/appointmentService";
 import "./Dashboard.css";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-
   const [loading, setLoading] = useState(true);
-  const [appointmentsCount, setAppointmentsCount] = useState(0);
+  const [doctors, setDoctors] = useState([]);
+  const [appointments, setAppointments] = useState([]);
 
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -23,11 +24,14 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await getProtectedData(); // Kept for backend ping if needed
-        const apptsData = await getAppointments().catch(() => []);
-        
-        // We only use appointments count currently
-        setAppointmentsCount(apptsData?.length || 0);
+        await getProtectedData();
+        const [doctorList, apptsData] = await Promise.all([
+          getDoctors().catch(() => []),
+          getAppointments().catch(() => []),
+        ]);
+
+        setDoctors(doctorList || []);
+        setAppointments(apptsData || []);
       } catch (error) {
         console.log(error);
       } finally {
@@ -36,7 +40,24 @@ const Dashboard = () => {
     };
 
     fetchData();
-  }, []);
+  }, [navigate]);
+
+  const availableDoctors = useMemo(
+    () => doctors.filter((doctor) => doctor.available),
+    [doctors]
+  );
+
+  const upcomingAppointments = useMemo(() => appointments.slice(0, 4), [appointments]);
+
+  const prescriptions = useMemo(() => {
+    return appointments.map((appt, index) => ({
+      id: appt._id || index,
+      doctor: appt.doctorName,
+      date: appt.date,
+      medication: "Follow-up Medication",
+      instructions: `Take as prescribed by ${appt.doctorName}.`,
+    }));
+  }, [appointments]);
 
   if (loading) {
     return <h2 style={{ textAlign: "center", padding: "50px" }}>Loading Dashboard...</h2>;
@@ -45,39 +66,32 @@ const Dashboard = () => {
   return (
     <div className="dashboard-wrapper">
       <div className="dashboard-content">
-        
-        {/* WELCOME BANNER */}
         <div className="dash-welcome-banner">
-          <h1>Welcome 👋 {user?.user?.name || user?.name || "Patient"}</h1>
+          <div>
+            <p className="dash-subtitle">Live appointment control center</p>
+            <h1>Welcome back, {user?.user?.name || user?.name || "Patient"}</h1>
+            <p className="dash-intro">Your doctors, appointments, and prescriptions are visible at a glance.</p>
+          </div>
         </div>
 
-        {/* BENTO GRID DATA */}
         <div className="dash-bento-grid">
+          <div className="dash-card dash-primary-card" onClick={() => navigate("/doctors")}>
+            <h3>🩺 Doctors Availability</h3>
+            <p>{availableDoctors.length} doctors currently available for booking.</p>
+            <span className="record-badge">Total Doctors: {doctors.length}</span>
+          </div>
 
-          <div 
-            className="dash-card dash-primary-card"  
-            onClick={() => navigate("/appointments")}
-          >
+          <div className="dash-card dash-secondary-card" onClick={() => navigate("/appointments")}>
             <h3>📅 Appointments</h3>
-            <p>Book and manage your doctor appointments securely and efficiently.</p>
-            <span className="record-badge">Total Records: {appointmentsCount}</span>
+            <p>{appointments.length} total appointments found on your account.</p>
+            <span className="record-badge">Upcoming: {upcomingAppointments.length}</span>
           </div>
 
-          <div className="dash-card">
-            <h3>📜 Medical History</h3>
-            <p>View your past health records and medical timeline.</p>
-          </div>
-
-          <div className="dash-card">
+          <div className="dash-card dash-tertiary-card" onClick={() => navigate("/appointments")}>
             <h3>💊 Prescriptions</h3>
-            <p>Access and review doctor prescriptions anytime, anywhere.</p>
+            <p>{prescriptions.length} prescriptions are available for review.</p>
+            <span className="record-badge">Latest: {prescriptions[0]?.medication || "No prescriptions"}</span>
           </div>
-
-          <div className="dash-card">
-            <h3>🟢 Doctor Availability</h3>
-            <p>Check real-time doctor status and schedule efficiently.</p>
-          </div>
-
         </div>
       </div>
     </div>

@@ -21,14 +21,54 @@ const DoctorProfile = () => {
   const [selectedTime, setSelectedTime] = useState("");
   const [bookedSlots, setBookedSlots] = useState([]);
 
-  const timeSlots = [
-    "06:00 pm",
-    "06:30 pm",
-    "07:00 pm",
-    "07:30 pm",
-    "08:00 pm",
-    "08:30 pm",
-  ];
+  // Generate real-time availability slots
+  const generateTimeSlots = () => {
+    const slots = [];
+    const now = new Date();
+    const selectedDate = new Date(date);
+    selectedDate.setHours(0, 0, 0, 0);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // If selected date is today, start from next available time
+    let startHour = 9; // 9 AM
+    let startMinute = 0;
+
+    if (selectedDate.getTime() === today.getTime()) {
+      // For today, find next available slot after current time
+      startHour = now.getHours();
+      startMinute = now.getMinutes();
+
+      // Round up to next 30-minute slot
+      if (startMinute < 30) {
+        startMinute = 30;
+      } else {
+        startHour += 1;
+        startMinute = 0;
+      }
+
+      // If it's already past work hours, no slots available
+      if (startHour >= 21) {
+        return slots;
+      }
+    }
+
+    // Generate slots from start time until 9 PM (21:00)
+    for (let hour = startHour; hour < 21; hour++) {
+      for (let minute = startMinute; minute < 60; minute += 30) {
+        const timeString = `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
+        const displayTime = hour > 12 
+          ? `${hour - 12}:${String(minute).padStart(2, "0")} pm`
+          : `${hour}:${String(minute).padStart(2, "0")} am`;
+        slots.push({ time: timeString, display: displayTime });
+      }
+      startMinute = 0; // After first iteration, always start at :00
+    }
+
+    return slots;
+  };
+
+  const timeSlots = generateTimeSlots();
 
   // Generate next 7 days
   const generateDates = () => {
@@ -165,26 +205,30 @@ const DoctorProfile = () => {
 
           {/* Time Slots */}
           <div className="times">
-            {timeSlots.map((time, i) => {
-              const isBooked = bookedSlots.includes(time);
+            {timeSlots.length > 0 ? (
+              timeSlots.map((slot, i) => {
+                const isBooked = bookedSlots.includes(slot.display);
 
-              return (
-                <button
-                  key={i}
-                  disabled={isBooked}
-                  className={
-                    selectedTime === time
-                      ? "time active"
-                      : isBooked
-                      ? "time disabled"
-                      : "time"
-                  }
-                  onClick={() => setSelectedTime(time)}
-                >
-                  {time}
-                </button>
-              );
-            })}
+                return (
+                  <button
+                    key={i}
+                    disabled={isBooked}
+                    className={
+                      selectedTime === slot.display
+                        ? "time active"
+                        : isBooked
+                        ? "time disabled"
+                        : "time"
+                    }
+                    onClick={() => setSelectedTime(slot.display)}
+                  >
+                    {slot.display}
+                  </button>
+                );
+              })
+            ) : (
+              <p className="no-slots">No available slots for this date</p>
+            )}
           </div>
 
           <button className="book-btn" onClick={handleBooking}>

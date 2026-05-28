@@ -1,18 +1,18 @@
 .appointments-container {
-  padding: 40px 20px;
-  background-color: #f8fafc;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #f0f4f8 0%, #f9fafb 50%, #eef2f6 100%);
   min-height: 100vh;
   font-family: 'Inter', sans-serif;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
 /* TITLE */
 .appointments-container .title {
-  margin-bottom: 30px;
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #1e293b;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #0f172a;
   letter-spacing: -0.5px;
 }
 
@@ -20,7 +20,7 @@
 .empty {
   text-align: center;
   color: #64748b;
-  margin-top: 50px;
+  margin-top: 80px;
   font-size: 1.2rem;
   font-weight: 500;
 }
@@ -31,133 +31,206 @@
   justify-content: space-between;
   align-items: center;
   background: white;
-  padding: 25px;
-  border-radius: 16px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid #f1f5f9;
+  padding: 28px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
 }
 
 .appointment-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+  border-color: #cbd5e1;
 }
 
 .appointment-card.pending {
-  border: 2px dashed #8b5cf6;
-  background-color: #f8fafc;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(168, 85, 247, 0.05));
+  border: 2px solid rgba(139, 92, 246, 0.3);
+  position: relative;
+}
+
+.appointment-card.pending::before {
+  content: 'PENDING PAYMENT';
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: linear-gradient(135deg, #8b5cf6, #a855f7);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 /* LEFT SECTION */
 .left {
   display: flex;
-  gap: 25px;
+  gap: 28px;
   align-items: center;
+  flex: 1;
 }
 
 .left img {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 110px;
   border-radius: 16px;
   object-fit: cover;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  border: 3px solid #f1f5f9;
 }
 
 /* DETAILS */
 .details h3 {
-  margin: 0 0 5px 0;
-  font-size: 1.4rem;
+  margin: 0 0 6px 0;
+  font-size: 1.5rem;
   color: #0f172a;
+  font-weight: 700;
 }
 
 .spec {
   color: #64748b;
-  font-weight: 500;
-  margin-bottom: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 0.98rem;
 }
 
 .address-title {
-  font-weight: bold;
+  font-weight: 600;
   color: #475569;
-  margin-top: 5px;
+  margin-top: 8px;
   font-size: 0.95rem;
 }
 
 .datetime {
-  margin-top: 15px;
-  color: #334155;
-  font-weight: 600;
-  background: #f1f5f9;
-  padding: 8px 12px;
-  border-radius: 8px;
+  margin-top: 12px;
+  color: #0f172a;
+  font-weight: 700;
+  background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+  padding: 10px 16px;
+  border-radius: 10px;
   display: inline-block;
+  border-left: 4px solid #3b82f6;
+  font-size: 0.95rem;
 }
 
 /* RIGHT SECTION */
 .right {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
   align-items: flex-end;
 }
 
 /* BUTTONS */
 .pay-btn {
-  padding: 12px 20px;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1.05rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  white-space: nowrap;
 }
 
 .pay-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(139, 92, 246, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(102, 126, 234, 0.4);
+  letter-spacing: 0.3px;
+}
+
+.pay-btn:active:not(:disabled) {
+  transform: translateY(-1px);
 }
 
 /* Disabled styling is already applied via inline style for Paid in frontend, but we specify backup default: */
 .pay-btn:disabled {
-  box-shadow: none;
+  box-shadow: 0 4px 10px rgba(128, 128, 128, 0.2);
   transform: none;
+  background: linear-gradient(135deg, #9ca3af, #6b7280) !important;
+  cursor: not-allowed;
 }
 
 .cancel-btn {
-  padding: 10px 15px;
-  background: white;
-  color: #ef4444;
-  border: 1px solid #fee2e2;
-  border-radius: 8px;
-  font-weight: 600;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 160px;
+  padding: 11px 20px;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important;
+  color: white !important;
+  border: 2px solid #b91c1c !important;
+  border-radius: 12px;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 1;
 }
 
 .cancel-btn:hover {
-  background: #fef2f2;
-  border-color: #ef4444;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important;
+  border-color: #991b1b !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(220, 38, 38, 0.25);
+}
+
+.cancel-btn:active {
+  transform: translateY(0);
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+  .appointments-container {
+    padding: 30px 15px;
+  }
+
+  .appointments-container .title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
   .appointment-card {
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
+    padding: 20px;
+  }
+
+  .appointment-card.pending::before {
+    position: static;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .left {
+    width: 100%;
+    gap: 20px;
+  }
+
+  .left img {
+    width: 90px;
+    height: 90px;
   }
 
   .right {
     width: 100%;
     align-items: stretch;
+    flex-direction: row;
+    gap: 10px;
   }
 
   .pay-btn, .cancel-btn {
-    width: 100%;
+    flex: 1;
     text-align: center;
   }
 }

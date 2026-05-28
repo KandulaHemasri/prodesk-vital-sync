@@ -14,3 +14,15 @@ export const getProtectedData = async () => {
 
   return res.data;
 };
+
+export const updateUserProfile = async (data) => {
+  const token = getToken();
+
+  const res = await axios.put(API_URL + "update-profile", data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return res.data;
+};

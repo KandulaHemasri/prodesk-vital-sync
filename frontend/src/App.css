@@ -126,10 +126,27 @@ p {
   color: #0077b6;
   cursor: pointer;
   border-radius: 5px;
+  transition: all 0.25s ease;
 }
 
-.profile-name {
-  font-weight: bold;
+.nav-right button:hover {
+  background: #90e0ef;
+  transform: scale(1.05);
+}
+
+.profile-btn {
+  font-size: 1.3rem;
+  padding: 6px 10px;
+  border-radius: 50%;
+  color: black;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+}
+
+.profile-btn:hover {
+  background: #caf0f8 !important;
 }
 
 /* DASHBOARD */

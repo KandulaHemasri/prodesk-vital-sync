@@ -12,6 +12,7 @@ import Success from "./pages/Success";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Appointments from "./pages/Appointments";
 import DoctorProfile from "./pages/DoctorProfile";
+import Profile from "./pages/Profile";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import PaymentPage from "./pages/PaymentPage";
@@ -36,6 +37,15 @@ function App() {
     element={
       <ProtectedRoute>
         <Dashboard />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/profile"
+    element={
+      <ProtectedRoute>
+        <Profile />
       </ProtectedRoute>
     }
   />
